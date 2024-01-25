@@ -36,12 +36,14 @@ public class ImageService {
         Image image=imageRepository2.findById(id).get();
 
         String wrd[]=screenDimensions.split("X");
-        int screenarea=Integer.parseInt(wrd[0])*Integer.parseInt(wrd[1]);
+        int screenh=Integer.parseInt(wrd[0]);
+        int screenw=Integer.parseInt(wrd[1]);
 
         String wrd1[]=image.getDimensions().split("X");
-        int imagarea= Integer.parseInt(wrd1[0]) * Integer.parseInt(wrd1[1]);
+        int imageh= Integer.parseInt(wrd1[0]) ;
+        int imagew= Integer.parseInt(wrd1[1]);
 
-        int res= screenarea/imagarea;
+        int res= (screenh/imageh) * (screenw/imagew) ;
         return res;
     }
 }
