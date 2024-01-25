@@ -21,12 +21,9 @@ public class BlogService {
     @Autowired
     UserRepository userRepository1;
 
-    public Blog createAndReturnBlog(Integer userId, String title, String content) throws Exception{
+    public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
         Optional <User> optionalUser=userRepository1.findById(userId);
-        if(optionalUser.isEmpty()){
-            throw new Exception();
-        }
 
         //create newblog and set user
         //add newblog to user's bloglist<>
@@ -43,12 +40,8 @@ public class BlogService {
         return newblog;
     }
 
-    public void deleteBlog(int blogId) throws  Exception{
+    public void deleteBlog(int blogId) {
         //delete blog and corresponding images
-        Optional<Blog>optionalBlog=blogRepository1.findById(blogId);
-        if (optionalBlog.isEmpty()){
-            throw new Exception();
-        }
         blogRepository1.deleteById(blogId);
     }
 }
