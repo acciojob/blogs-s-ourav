@@ -19,6 +19,16 @@ public class Image {
     @ManyToOne
     private Blog blog;
 
+    public Image() {
+    }
+
+    public Image(int id, String description, String dimensions, Blog blog) {
+        this.id = id;
+        this.description = description;
+        this.dimensions = dimensions;
+        this.blog = blog;
+    }
+
     public Image(String description, String dimensions) {
         this.description = description;
         this.dimensions = dimensions;
