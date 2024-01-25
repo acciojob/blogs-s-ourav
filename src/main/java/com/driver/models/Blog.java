@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Blog {
     private int id;
     private String title;
     private String content;
+    @CreationTimestamp
     private Date pubdate;
 
     @JoinColumn
@@ -53,11 +55,11 @@ public class Blog {
         this.content = content;
     }
 
-    public Date getPubdate() {
+    public Date getPubDate() {
         return pubdate;
     }
 
-    public void setPubdate(Date pubdate) {
+    public void setPubDate(Date pubdate) {
         this.pubdate = pubdate;
     }
 
