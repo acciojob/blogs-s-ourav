@@ -35,7 +35,7 @@ public class BlogController {
         try {
             blogService.deleteBlog(blogId);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
