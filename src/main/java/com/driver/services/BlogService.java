@@ -29,15 +29,17 @@ public class BlogService {
         //add newblog to user's bloglist<>
 
         User usertobelinked=optionalUser.get();
-        Blog newblog=new Blog(title,content);
 
+        Blog newblog=new Blog(title,content);
+        newblog.setPubDate(new Date());
         newblog.setUser(usertobelinked);
+
         usertobelinked.getBlogList().add(newblog);
 
-        blogRepository1.save(newblog);
+        Blog savedBlog=blogRepository1.save(newblog);
         userRepository1.save(usertobelinked);
 
-        return newblog;
+        return savedBlog;
     }
 
     public void deleteBlog(int blogId) {
