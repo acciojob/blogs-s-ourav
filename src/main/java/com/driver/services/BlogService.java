@@ -27,8 +27,19 @@ public class BlogService {
         if(optionalUser.isEmpty()){
             throw new Exception();
         }
+
+        //create newblog and set user
+        //add newblog to user's bloglist<>
+
         User usertobelinked=optionalUser.get();
-        Blog newblog=new Blog(usertobelinked,title,content);
+        Blog newblog=new Blog(title,content);
+
+        newblog.setUser(usertobelinked);
+        usertobelinked.getBlogList().add(newblog);
+
+        blogRepository1.save(newblog);
+        userRepository1.save(usertobelinked);
+
         return newblog;
     }
 

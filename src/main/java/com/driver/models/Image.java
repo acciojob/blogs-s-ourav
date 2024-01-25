@@ -19,11 +19,9 @@ public class Image {
     @ManyToOne
     private Blog blog;
 
-    public Image(Blog blog,String description, String dimensions) {
+    public Image(String description, String dimensions) {
         this.description = description;
         this.dimensions = dimensions;
-        this.blog=blog;
-
     }
 
     public int getId() {

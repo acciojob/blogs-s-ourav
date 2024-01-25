@@ -29,13 +29,29 @@ public class Blog {
     @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL)
     private List<Image> imageList=new ArrayList<>();
 
+    public User getUser() {
+        return user;
+    }
+
+    public List<Image> getImageList() {
+        return imageList;
+    }
+
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Blog() {
     }
 
-    public Blog(User user, String title, String content) {
+    public Blog( String title, String content) {
         this.title = title;
         this.content = content;
-        this.user=user;
+
     }
 
     public Blog(int id, String title, String content, Date pubdate, User user, List<Image> imageList) {
