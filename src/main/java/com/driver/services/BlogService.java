@@ -23,12 +23,10 @@ public class BlogService {
 
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
-        Optional <User> optionalUser=userRepository1.findById(userId);
+        User usertobelinked=userRepository1.findById(userId).get();
 
         //create newblog and set user
         //add newblog to user's bloglist<>
-
-        User usertobelinked=optionalUser.get();
 
         Blog newblog=new Blog(title,content);
         newblog.setPubDate(new Date());
@@ -36,10 +34,10 @@ public class BlogService {
 
         usertobelinked.getBlogList().add(newblog);
 
-        Blog savedBlog=blogRepository1.save(newblog);
+        blogRepository1.save(newblog);
         userRepository1.save(usertobelinked);
 
-        return savedBlog;
+        return newblog;
     }
 
     public void deleteBlog(int blogId) {
